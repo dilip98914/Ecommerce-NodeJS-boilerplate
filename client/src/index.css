@@ -1,0 +1,42 @@
+html{
+  background-color: black;
+  color:white
+}
+table {
+  font-family: arial, sans-serif;
+  border-collapse: collapse;
+  width: 100%;
+}
+
+td, th {
+  border: 1px solid #dddddd;
+  text-align: left;
+  padding: 8px;
+}
+
+tr:nth-child(even) {
+  background-color: green;
+}
+
+h4{
+  color:green;
+  text-decoration:underline;
+  text-align:center;
+  cursor: pointer;
+}
+
+
+h4:hover{
+  color:white;
+  text-decoration:none;
+  cursor: pointer;
+}
+
+.centered{
+  position:absolute;
+  top:50%;
+  left:50%;
+  transform:translate(-50%,-50%);
+  color:'red';
+  text-decoration:underline;
+}
