@@ -1,42 +1,48 @@
-html{
-  background-color: black;
-  color:white
+.right-portion{
+  display: flex;
+  margin-left: 500px;
 }
-table {
-  font-family: arial, sans-serif;
-  border-collapse: collapse;
-  width: 100%;
+#shop{
+  margin-top: 120px;
 }
-
-td, th {
-  border: 1px solid #dddddd;
-  text-align: left;
-  padding: 8px;
+#cart{
+  display: flex;
+  justify-content: space-evenly;
+  box-shadow: 0 3px 10px rgb(0 0 0 / 0.2);
+  width: 80%;
+  margin:auto;
 }
-
-tr:nth-child(even) {
-  background-color: green;
+#cart-heading{
+  margin-top: 120px;
+  text-align: center;
+  color: #2867B2;
 }
-
-h4{
-  color:green;
-  text-decoration:underline;
-  text-align:center;
-  cursor: pointer;
+#cart-heading0{
+  text-align: center;
+  color: #2867B2;
 }
-
-
-h4:hover{
-  color:white;
-  text-decoration:none;
-  cursor: pointer;
+#cart-item{
+  display: flex;
+  padding: 20px;
+  margin:10px;
+  color:gray;
 }
-
-.centered{
-  position:absolute;
-  top:50%;
-  left:50%;
-  transform:translate(-50%,-50%);
-  color:'red';
-  text-decoration:underline;
+.left-wrapper{
+  width:70%;
+  padding: 10px;
+}
+.right-wrapper{
+  margin:auto;
+  padding: 10px;
+}
+.card{
+  padding: 10px;
+  margin: 10px;
+}
+.row{
+  margin: 0 auto;
+}
+.forms{
+  width:50%;
+  margin: 150px auto;
 }

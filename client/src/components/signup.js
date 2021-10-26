@@ -30,23 +30,35 @@ export default function(){
   }
   
   return (
-    <div>
-      <input
-        name='email'
-        value={email}
-        onChange={(e)=>handleChange(e)}
-        type='text'
-        placeholder='EMAIL'
-      />
-      <input
-        name='password'
-        value={password}
-        onChange={(e)=>handleChange(e)}
-        type='password'
-        placeholder='PASSWORD'
-      />
-      <button onClick={()=>handleSignup()}>signup</button>
-      <h5>already a user...<Link to='/login'>login here</Link></h5>
-    </div>
-  )
+    <form className='forms'>
+      <div className="form-outline mb-4">
+        <input
+          type="email"
+          id="form1Example1"
+          className="form-control"
+          name='email'
+          value={email}
+          onChange={(e) => handleChange(e)}
+        />
+        <label className="form-label" for="form1Example1">Email address</label>
+      </div>
+
+      <div className="form-outline mb-4">
+        <input
+          id="form1Example2"
+          className="form-control"
+          name='password'
+          value={password}
+          onChange={(e) => handleChange(e)}
+          type='password'
+        />
+        <label className="form-label" for="form1Example2">Password</label>
+      </div>
+
+      <div className="col">
+        <Link to="/login">Already registered?</Link>
+      </div>
+      <button type="submit" onClick={() => handleSignup()} className="btn btn-primary btn-block">Signup</button>
+    </form >
+ )
 }
