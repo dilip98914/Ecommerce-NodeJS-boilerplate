@@ -16,3 +16,7 @@ razorpay
 4.finally payment gateway to purchase that item
 Note:used context API for state management with functional components
 code is badly written, but it was fun! 
+
+### Branching
+master is v1
+v2 is sepreate branch(which has enhanced designs)
