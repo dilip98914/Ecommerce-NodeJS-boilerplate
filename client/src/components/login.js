@@ -1,5 +1,5 @@
 import { useState, useContext } from 'react'
-import { useHistory ,Link} from 'react-router-dom';
+import { useHistory, Link } from 'react-router-dom';
 import { AppContext } from '../App';
 
 export default function () {
@@ -25,10 +25,10 @@ export default function () {
       })
     }).then(res => res.json())
       .then(data => {
-        const {token}=data;
-        if(token){
-          localStorage.setItem('token',token);
-        }else{
+        const { token } = data;
+        if (token) {
+          localStorage.setItem('token', token);
+        } else {
           // 
         }
         history.push('/profile');
@@ -46,23 +46,36 @@ export default function () {
 
 
   return (
-    <div>
-      <input
-        name='email'
-        value={email}
-        onChange={(e) => handleChange(e)}
-        type='text'
-        placeholder='EMAIL'
-      />
-      <input
-        name='password'
-        value={password}
-        onChange={(e) => handleChange(e)}
-        type='password'
-        placeholder='PASSWORD'
-      />
-      <button style={{ background: 'white', color: 'green', cursor: 'pointer' }} onClick={() => handleLogin()}>LOGIN</button>
-      <h5>not a  registered user...<Link to='/signup'>click here</Link></h5>
-    </div>
+    <form className='forms'>
+      <div className="form-outline mb-4">
+        <input
+          type="email"
+          id="form1Example1"
+          className="form-control"
+          name='email'
+          value={email}
+          onChange={(e) => handleChange(e)}
+        />
+        <label className="form-label" for="form1Example1">Email address</label>
+      </div>
+
+      <div className="form-outline mb-4">
+        <input
+          id="form1Example2"
+          className="form-control"
+          name='password'
+          value={password}
+          onChange={(e) => handleChange(e)}
+          type='password'
+        />
+        <label className="form-label" for="form1Example2">Password</label>
+      </div>
+
+      <div className="col">
+        <Link to="/signup">Not an existing User?</Link>
+      </div>
+      <button type="submit" onClick={() => handleLogin()} className="btn btn-primary btn-block">Login</button>
+    </form >
   )
 }
+

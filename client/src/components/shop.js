@@ -1,7 +1,7 @@
 import { useState, useEffect, useContext } from 'react'
-import {useHistory} from 'react-router-dom';
+import { useHistory } from 'react-router-dom';
 import { AppContext } from '../App';
-import {baseURL} from '../config/constant';
+import { baseURL } from '../config/constant';
 
 function fetchProducts(url) {
   return new Promise((resolve, reject) => {
@@ -14,7 +14,7 @@ function fetchProducts(url) {
 
 export default function () {
   const { appState, setAppState } = useContext(AppContext);
-  const history=useHistory();
+  const history = useHistory();
 
   useEffect(() => {
     // if(appState.user===null){
@@ -55,39 +55,37 @@ export default function () {
     })
   }
 
+  const getRandom=()=>{
+    return Math.round(Math.random()*100)
+  }
+
   return (
-    <table>
-      <tr>
-        <th>
-          Sno.
-        </th>
-        <th>
-          Title
-        </th>
-        <th>
-          price
-        </th>
-        <th>
-          category
-        </th>
-      </tr>
-      {appState.products !== null && appState.products.map((p, i) => (
-        <tr>
-          <td>
-            {i + 1}
-          </td>
-          <td>
-            {p.title}
-          </td>
-          <td>
-            {p.price}
-          </td>
-          <td>
-            {p.category}
-            <button onClick={() => addToCart(p)} style={{ background: 'white', color: 'green', float: 'right', cursor: 'pointer' }}>+</button>
-          </td>
-        </tr>
-      ))}
-    </table>
+    <div className="container" id='shop'>
+      <div className="row">
+        {appState.products !== null && appState.products.map((p, i) => (
+            <div className="col-3 card">
+              <img
+                src={`https://loremflickr.com/320/240?random=${getRandom()}`}
+                className="card-img-top"
+                alt="..."
+                style={{ width: '200px' }}
+              />
+              <div className="card-body">
+                <h5 className="card-title">
+                  {p.title}
+                </h5>
+                <p className="card-text">
+                  {p.price}
+                </p>
+                <p className="card-text">
+                  {p.category}
+                </p>
+                <button type="button" className="btn btn-primary" onClick={() => addToCart(p)} style={{ background: '#2867B2', color: 'white', float: 'right', cursor: 'pointer' }}>+</button>
+              </div>
+            </div>
+        ))}
+      </div>
+    </div>
+
   )
 }
