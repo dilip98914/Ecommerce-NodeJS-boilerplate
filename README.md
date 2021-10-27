@@ -18,5 +18,6 @@ Note:used context API for state management with functional components
 code is badly written, but it was fun! 
 
 ### Branching
-master is v1
-v2 is sepreate branch(which has enhanced designs)
+master is latest
+v1=>without design
+v2=>mdbootstrap
