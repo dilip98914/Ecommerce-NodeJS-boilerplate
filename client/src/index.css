@@ -1,3 +1,28 @@
+body {
+  font-family: Roboto, Helvetica, Arial, sans-serif;
+}
+
+.container{
+  margin: 50px 0;
+}
+#reg-form{
+  text-align: center;
+}
+
+.blog-card{
+  margin: 69px 0 !important;
+}
+
+.blog-image{
+  border-radius: 50%;
+  width: 200px;
+}
+
+.logo-image{
+  width:100px;
+}
+
+
 .right-portion{
   display: flex;
   margin-left: 500px;

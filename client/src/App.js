@@ -1,5 +1,5 @@
 import { createContext, useState, useEffect } from 'react';
-import { useHistory,Link } from 'react-router-dom';
+import { useHistory, Link } from 'react-router-dom';
 import "./index.css"
 import Shop from './components/shop';
 import Login from './components/login';
@@ -9,6 +9,8 @@ import Navbar from './components/navbar';
 import Profile from './components/profile';
 import { baseURL } from './config/constant';
 import { Switch, BrowserRouter as Router, Route } from 'react-router-dom';
+import 'mdb-react-ui-kit/dist/css/mdb.min.css'
+import Homepage from './components/homepage';
 
 export const AppContext = createContext();
 
@@ -53,23 +55,27 @@ function App() {
     <AppContext.Provider value={{ appState, setAppState }}>
       <Router>
         <Navbar logged={false} />
-        <Switch>
-          <Route path='/login'>
-            <Login />
-          </Route>
-          <Route path='/signup'>
-            <Signup />
-          </Route>
-          <Route path='/cart'>
-            <Cart />
-          </Route>
-          <Route exact path='/profile'>
-            <Profile />
-          </Route>
-          <Route path='/shop'>
-            <Shop />
-          </Route>
-          <Route exact path='/'>
+        <div className='container'>
+          <Switch>
+            <Route path='/login'>
+              <Login />
+            </Route>
+            <Route path='/signup'>
+              <Signup />
+            </Route>
+            <Route path='/cart'>
+              <Cart />
+            </Route>
+            <Route exact path='/profile'>
+              <Profile />
+            </Route>
+            <Route path='/shop'>
+              <Shop />
+            </Route>
+            <Route exact path='/'>
+              <Homepage/>
+            </Route>
+            {/* <Route exact path='/'>
             <>
               <div className="mask" style={{ backgroundColor: '#2867B2' }}>
                 <div className="d-flex justify-content-center align-items-center h-100">
@@ -86,8 +92,9 @@ function App() {
                 </div>
               </div>
             </>
-          </Route>
-        </Switch>
+          </Route> */}
+          </Switch>
+        </div>
       </Router>
     </AppContext.Provider>
   );

@@ -2,10 +2,28 @@ import { useContext, useState, useEffect } from 'react'
 import { useHistory, Link } from 'react-router-dom';
 import { AppContext } from '../App';
 import { baseURL } from '../config/constant';
+import {
+  MDBContainer,
+  MDBNavbar,
+  MDBNavbarBrand,
+  MDBNavbarToggler,
+  MDBIcon,
+  MDBNavbarNav,
+  MDBNavbarItem,
+  MDBNavbarLink,
+  MDBBtn,
+  MDBDropdown,
+  MDBDropdownToggle,
+  MDBDropdownMenu,
+  MDBDropdownItem,
+  MDBDropdownLink,
+  MDBCollapse
+} from 'mdb-react-ui-kit';
 
 export default function () {
   const { appState, setAppState } = useContext(AppContext);
   const [email, setEmail] = useState(null);
+  const [showBasic, setShowBasic] = useState(false);
 
   const getUser = () => {
     fetch(`${baseURL}/user/get-user-by-token`, {
@@ -35,82 +53,68 @@ export default function () {
 
   return (
 
-    <nav className="navbar navbar-expand-lg navbar-light bg-white fixed-top" id='navbar'>
-      <div className="container-fluid">
-        <button
-          className="navbar-toggler"
-          type="button"
-          data-mdb-toggle="collapse"
-          data-mdb-target="#navbarExample01"
-          aria-controls="navbarExample01"
-          aria-expanded="false"
-          aria-label="Toggle navigation"
+    <MDBNavbar expand='lg' light bgColor='light'>
+      <MDBContainer fluid>
+        <MDBNavbarBrand >
+          <Link to='/'>
+            <img className='logo-image' src='img/logo.png' />
+          </Link>
+        </MDBNavbarBrand>
+
+        <MDBNavbarToggler
+          aria-controls='navbarSupportedContent'
+          aria-expanded='false'
+          aria-label='Toggle navigation'
+          onClick={() => setShowBasic(!showBasic)}
         >
-          <i className="fas fa-bars"></i>
-        </button>
-        <div className="collapse navbar-collapse" id="navbarExample01">
-          <ul className="navbar-nav me-auto mb-2 mb-lg-0">
-            <li className="nav-item active" id='logo'>
-              <Link className="nav-link" aria-current="page" to='/'>
-                <img style={{ width: '100px' }} src='img/logo.png' />
-              </Link>
-            </li>
-            <div className='right-portion'>
-              <li>
-                <div class="input-group">
-                  <div class="form-outline">
-                    <input type="search" id="form1" class="form-control" />
-                    <label class="form-label" for="form1">Search</label>
-                  </div>
-                  <button type="button" class="btn btn-primary">
-                    <i class="fas fa-search"></i>
-                  </button>
-                </div>
-              </li>
-              &nbsp;&nbsp;&nbsp;&nbsp;
-              <li className="nav-item">
-                <Link className="nav-link" to='/cart' aria-current="page" >
-                  <i class="fas fa-shopping-cart"></i>&nbsp;&nbsp;
-                  Cart</Link>
-              </li>
-              <li className="nav-item">
-                <Link className="nav-link" to='/shop' aria-current="page" >
-                  Shop</Link>
-              </li>
+          <MDBIcon icon='bars' fas />
+        </MDBNavbarToggler>
 
-              {
-                email === null ?
-                  <>
-                    <li className="nav-item">
-                      <Link className="nav-link" to='/login' aria-current="page" >
-                        Login</Link>
-                    </li>
-                    <li className="nav-item">
-                      <Link className="nav-link" to='/signup' aria-current="page" >
-                        Signup</Link>
-                    </li>
+        <MDBCollapse navbar show={showBasic}>
+          <MDBNavbarNav className='mr-auto mb-2 mb-lg-0'>
+            <MDBNavbarItem>
+              <MDBNavbarLink active aria-current='page'>
+                <Link to='/shop'>
+                Shop
+                </Link>
+              </MDBNavbarLink>
+            </MDBNavbarItem>
 
-                  </>
-                  :
+            <MDBNavbarItem>
+              <MDBDropdown>
+                <MDBDropdownToggle tag='a' className='nav-link'>
+                  Account
+                </MDBDropdownToggle>
+                <MDBDropdownMenu>
+                  <MDBDropdownItem>
+                    <MDBDropdownLink>
+                <Link to='/signup'>
+                Signup
+                      </Link>
+                      </MDBDropdownLink>
+                  </MDBDropdownItem>
+                  <MDBDropdownItem>
+                    <MDBDropdownLink>
+                <Link to='/login'>
+                      Login
+                      </Link>
+                      </MDBDropdownLink>
+                  </MDBDropdownItem>
+                </MDBDropdownMenu>
+              </MDBDropdown>
+            </MDBNavbarItem>
+          </MDBNavbarNav>
 
-                  <>
-                    <li className="nav-item">
-                      <Link className="nav-link" to='/profile' aria-current="page" >
-                        <i class="fas fa-user-alt"></i>&nbsp;
-                        Profile {email}</Link>
-                    </li>
-                    <li className="nav-item">
-                      <button onClick={() => { localStorage.removeItem('token'); window.location.reload() }} className="btn btn-primary" aria-current="page" >
-                        <i class="fas fa-power-off"></i>&nbsp;
-                        Logout</button>
-                    </li>
-                  </>
-              }
-            </div>
-          </ul>
-        </div>
-      </div>
-    </nav>
+          <form className='d-flex input-group w-auto'>
+            <input type='search' className='form-control' placeholder='Search' aria-label='Search' />
+            <MDBBtn color='primary'>
+              <i class="fas fa-search"></i>
+            </MDBBtn>
+          </form>
+        </MDBCollapse>
+      </MDBContainer>
+    </MDBNavbar>
+
 
   )
 }

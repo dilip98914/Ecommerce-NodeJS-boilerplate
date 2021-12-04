@@ -1,6 +1,7 @@
 import { useState, useContext } from 'react'
 import { useHistory, Link } from 'react-router-dom';
 import { AppContext } from '../App';
+import { MDBInput ,MDBBtn} from 'mdb-react-ui-kit';
 
 export default function () {
   const [email, setEmail] = useState();
@@ -46,36 +47,33 @@ export default function () {
 
 
   return (
-    <form className='forms'>
-      <div className="form-outline mb-4">
-        <input
-          type="email"
-          id="form1Example1"
-          className="form-control"
+    <div className='row'>
+      <div className='col-4'></div>
+      <form className='card col-4' id='reg-form'>
+        <MDBInput 
+          label='Enter email'
+          type='email'
           name='email'
           value={email}
           onChange={(e) => handleChange(e)}
-        />
-        <label className="form-label" for="form1Example1">Email address</label>
-      </div>
-
-      <div className="form-outline mb-4">
-        <input
-          id="form1Example2"
-          className="form-control"
+          />
+          <br/>
+        <MDBInput 
+          label='Enter password'
+          type='password'
           name='password'
           value={password}
           onChange={(e) => handleChange(e)}
-          type='password'
-        />
-        <label className="form-label" for="form1Example2">Password</label>
-      </div>
+          />
+          <br/>
+          <small>Not an user? <Link to='/signup'>Signup</Link> here</small><br/>
+      <MDBBtn onClick={() => handleLogin()}>login</MDBBtn>
 
-      <div className="col">
-        <Link to="/signup">Not an existing User?</Link>
-      </div>
-      <button type="submit" onClick={() => handleLogin()} className="btn btn-primary btn-block">Login</button>
-    </form >
+    </form>
+      <div className='col-4'></div>
+    </div>
+
+
   )
 }
 
